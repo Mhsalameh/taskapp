@@ -1,0 +1,46 @@
+version: '3.8'
+services:
+  webapp:
+    build: ./webapp
+    hostname: nodejsserver
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+    networks:
+      - taskapp_web
+      - task_app_db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+    networks:
+      - task_app_db
+    ports:
+      - 5432:5432
+  nginx:
+    image: nginx:latest
+    ports:
+      - 80:80
+      - 433:433
+    volumes:
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - taskapp_web
+    depends_on:
+      - webapp
+
+networks:
+  taskapp_web:
+  task_app_db:
+volumes:
+  dbdata:
+
