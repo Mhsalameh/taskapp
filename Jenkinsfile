@@ -8,6 +8,7 @@ pipeline {
 
             steps {
                 echo "building stage"
+                echos "webhooks good"
             }
         }
     }
