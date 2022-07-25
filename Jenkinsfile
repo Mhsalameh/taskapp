@@ -1,29 +1,30 @@
 pipeline {
     
-    agent any
+    agent {
+        docker {
+            image 'node:6-alpine'
+            args '-p 3000:3000'
+        }
+    }
 
     stages {
 
         stage("build") {
 
             steps {
-                echo 'building application ...'
-                echo 'testing polls'
-            }
-        }
-
-        stage("test") {
-
-            steps {
-                echo 'testing application ...'
-            }
-        }
-
-        stage("deploy") {
-
-            steps {
-                echo 'deploying application ...'
+                sh 'npm install'
             }
         }
     }
+    // post {
+    //     always {
+    //         echo "this will always show"
+    //     }
+    //     failure {
+    //         echo "one stage failed"
+    //     }
+    //     success {
+    //         "all stages succeeded"
+    //     }
+    // }
 }
