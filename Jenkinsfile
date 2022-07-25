@@ -1,15 +1,12 @@
 pipeline {
 
-   agent any
-
+    agent { dockerfile true }
+    
     stages {
         stage("build") {
 
             steps {
                 echo "building app..."
-                nodejs('node'){
-                    sh 'npm install'
-                }
             }
         }
     }
