@@ -1,14 +1,25 @@
 pipeline {
     
-    agent any
+       
+    agent {
+        docker {
+            image 'node:16-alpine'
+            args '-p 3000:3000'
+        }
+    }
+
 
     stages {
-
+        stage("tooling"){
+            steps {
+                sh 'node --version'
+            }
+        }
         stage("build") {
 
             steps {
                 echo "building stage"
-                echos "webhooks good"
+                echo "webhooks good"
             }
         }
     }
