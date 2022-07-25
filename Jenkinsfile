@@ -11,8 +11,7 @@ pipeline {
         stage("build") {
 
             steps {
-                echo "building stage"
-                echo "webhooks good"
+               sh 'npm install'
             }
         }
     }
