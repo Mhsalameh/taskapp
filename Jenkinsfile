@@ -1,12 +1,10 @@
 pipeline {
     
-       
     agent {
         docker {
             image 'node:16-alpine'
         }
     }
-
 
     stages {
         stage("tooling"){
@@ -22,15 +20,4 @@ pipeline {
             }
         }
     }
-    // post {
-    //     always {
-    //         echo "this will always show"
-    //     }
-    //     failure {
-    //         echo "one stage failed"
-    //     }
-    //     success {
-    //         "all stages succeeded"
-    //     }
-    // }
 }

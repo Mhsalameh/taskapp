@@ -37,22 +37,9 @@ services:
       - taskapp_web
     depends_on:
       - webapp
-    
-  jenkins:
-    image: jenkins/jenkins
-    hostname: jenkinshost
-    ports:
-      - 8080:8080
-      - 50000:50000
-    volumes:
-      - jenkins_home:/var/jenkins_home
-    networks:
-      - taskapp_web
 
 networks:
   taskapp_web:
   task_app_db:
 volumes:
   dbdata:
-  jenkins_home:
-
