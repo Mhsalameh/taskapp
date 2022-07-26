@@ -15,12 +15,14 @@ pipeline {
                 }
             }
         }
-        stage ('run'){
+        stage ('testing'){
             steps{
-                echo "running the app"
-                nodejs('node'){
-                    sh 'npm ./webapp/src/server.js'
-                }
+                echo "testing app"
+            }
+        }
+        stage ('deploying'){
+            steps{
+                echo "deploying app"
             }
         }
     }
