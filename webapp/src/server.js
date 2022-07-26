@@ -22,7 +22,7 @@ app.use(cors())
 
 app.get('/', async (req,res)=>{
     let sql = `INSERT INTO users(name, role) VALUES($1, $2) RETURNING *;`;
-    let values = ['mohammad', 'devops'];
+    let values = ['khalid', 'devops'];
     try {
         await pool.query(`
         CREATE TABLE IF NOT EXISTS "users" (
